@@ -1,31 +1,14 @@
-import express, { response } from 'express';
-import dotenv from 'dotenv';
-dotenv.config();
+import express from 'express';
+import { config } from './src/config/dotenv.js';
+import routes from './src/routes/routesPosts.js';
 
-import posts  from './arrayTest.js';
-
-const PORT = process.env.PORT || 3333; 
+const PORT = config.PORT; 
 
 const app = express();
-app.use(express.json());
+routes(app);
 
 app.get('/', (request, response) => {
     response.status(200).json({message: "OK"});
-});
-
-app.get('/posts', (request, response) => {
-    response.status(200).json({'message': posts});
-});
-
-const buscar = (id) => {
-    let post = posts.find((post) => post.id === Number(id));
-    if (!post) return undefined;
-    const { description, image } = post;
-    return { description, image };
-};
-
-app.get('/posts/:id', (request, response) => {
-    response.status(200).json(buscar(request.params.id));
 });
 
 app.listen(PORT, () => {
