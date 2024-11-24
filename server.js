@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { config } from './src/config/dotenv.js';
 import routes from './src/routes/routesPosts.js';
 

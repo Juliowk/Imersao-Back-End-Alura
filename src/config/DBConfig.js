@@ -14,7 +14,7 @@ export default async function conectarAoBanco (stringConexao) {
         console.log(`Conectado ao MongoDB Atlas com sucesso!`);
         return mongoClient;    
     } catch (error) {
-        console.log(`Fala na conexão com o banco!`, error);;
+        console.log(`Fala na conexão com o banco!`, error);
         process.exit();
     };
 };
